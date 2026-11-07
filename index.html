@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ÇáÌíæáæÌíÇ ÇáÚÇãÉ ááÓäÉ ÇáËÇáËÉ ÇÈÊÏÇÆí</title>
+    <title>Ø§Ù„Ø¬ÙŠÙˆÙ„ÙˆØ¬ÙŠØ§ Ø§Ù„Ø¹Ø§Ù…Ø© Ù„Ù„Ø³Ù†Ø© Ø§Ù„Ø«Ø§Ù„Ø«Ø© Ø§Ø¨ØªØ¯Ø§Ø¦ÙŠ</title>
     <style>
         * {
             margin: 0;
@@ -65,59 +65,18 @@
             background: #000;
             aspect-ratio: 16 / 9;
             width: 100%;
-            -webkit-user-drag: none;
-            user-drag: none;
             flex-shrink: 0;
         }
 
-        video {
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            border: none;
             display: block;
             background: #000;
-            pointer-events: auto;
-            -webkit-user-drag: none;
-        }
-
-        video::-internal-media-controls-download-button {
-            display: none !important;
-        }
-        video::-moz-media-controls-download-button {
-            display: none !important;
-        }
-        video::-webkit-media-controls {
-            overflow: hidden !important;
-        }
-
-        .player-label {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.9rem 0.5rem 0.2rem 0.5rem;
-            color: #b0c2dc;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
-
-        .lock-icon {
-            font-size: 1rem;
-            opacity: 0.7;
-            margin-right: 6px;
-        }
-
-        .badge {
-            background: #1e2a3a;
-            padding: 0.25rem 0.75rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            color: #7f93b0;
-            border: 1px solid #31445b;
-            font-weight: 400;
         }
 
         /* right: list of videos */
@@ -201,49 +160,6 @@
             flex: 1;
         }
 
-        .video-item .item-icon {
-            opacity: 0.5;
-            font-size: 1rem;
-        }
-
-        .video-item.active .item-icon {
-            opacity: 1;
-        }
-
-        /* notice */
-        .notice {
-            margin-top: 2rem;
-            color: #5f7188;
-            font-size: 0.85rem;
-            text-align: center;
-            background: #0e131c;
-            padding: 0.9rem 2rem;
-            border-radius: 40px;
-            border: 1px solid #26303e;
-            backdrop-filter: blur(8px);
-            max-width: 750px;
-            line-height: 1.5;
-            width: 100%;
-        }
-
-        .notice span {
-            color: #9bb1d0;
-            font-weight: 500;
-        }
-
-        .path-hint {
-            margin-top: 0.75rem;
-            font-size: 0.75rem;
-            color: #4a5b72;
-            letter-spacing: 0.5px;
-            font-family: monospace;
-            background: #0b1018;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            display: inline-block;
-            border: 1px solid #1e2938;
-        }
-
         /* responsive: stack on smaller screens */
         @media (max-width: 850px) {
             .main-layout {
@@ -269,62 +185,56 @@
 </head>
 <body>
 
-    <h1> ENSL ÇáÌíæáæÌíÇ ÇáÚÇãÉ ááÓäÉ ÇáËÇáËÉ ÇÈÊÏÇÆí</h1>
+    <h1> ENSL Ø§Ù„Ø¬ÙŠÙˆÙ„ÙˆØ¬ÙŠØ§ Ø§Ù„Ø¹Ø§Ù…Ø© Ù„Ù„Ø³Ù†Ø© Ø§Ù„Ø«Ø§Ù„Ø«Ø© Ø§Ø¨ØªØ¯Ø§Ø¦ÙŠ</h1>
 
     <div class="main-layout">
-        <!-- LEFT: big player -->
+        <!-- LEFT: iframe player -->
         <div class="player-panel">
             <div class="video-wrapper">
-                <video 
-                    controls 
-                    controlsList="nodownload noplaybackrate nofullscreen" 
-                    disablePictureInPicture
-                    playsinline
-                    preload="metadata"
-                    oncontextmenu="return false;"
-                    id="mainVideo"
-                >
-                    <source id="mainSource" src="" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <iframe
+                    id="mainFrame"
+                    src="https://drive.google.com/file/d/1ZT9N3JUwGu2yQIAtgMJGdlboieDHYFZu/preview"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen
+                    referrerpolicy="no-referrer"
+                ></iframe>
             </div>
         </div>
 
         <!-- RIGHT: list of videos -->
         <div class="list-panel" id="listPanel">
-            <h2>ÇáÞÇÆãÉ</h2>
-            <div class="video-item active" data-index="1" 
-                 data-src="https://drive.google.com/file/d/1HYb_6a3s_vTX-9Bovq1h8uKoF1jCKc-A/preview" 
-                 data-title="ÇáãÍÇÖÑÉ ÇáÃæáì">
+            <h2>Ø§Ù„Ù‚Ø§Ø¦Ù…Ø©</h2>
+            <div class="video-item active" data-index="1"
+                 data-src="https://drive.google.com/file/d/1pW--YeCffRhmT1V15ngMP6JvY9A6395M/preview"
+                 data-title="Ø§Ù„Ù…Ø­Ø§Ø¶Ø±Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰">
                 <span class="num">1</span>
-                <span class="item-title">ÇáãÍÇÖÑÉ ÇáÃæáì</span>
+                <span class="item-title">Ø§Ù„Ù…Ø­Ø§Ø¶Ø±Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰</span>
             </div>
-            <div class="video-item" data-index="2" 
-                 data-src="https://drive.google.com/file/d/1YOUR_VIDEO_ID_2/preview" 
-                 data-title="ÇáãÍÇÖÑÉ ÇáËÇäíÉ">
+            <div class="video-item" data-index="2"
+                 data-src="https://drive.google.com/file/d/1RQSq09_TN3LG6jVUxKu93uVOl6dcUTS1/preview"
+                 data-title="Ø§Ù„Ù…Ø­Ø§Ø¶Ø±Ø© Ø§Ù„Ø«Ø§Ù†ÙŠØ©">
                 <span class="num">2</span>
-                <span class="item-title">ÇáãÍÇÖÑÉ ÇáËÇäíÉ</span>
+                <span class="item-title">Ø§Ù„Ù…Ø­Ø§Ø¶Ø±Ø© Ø§Ù„Ø«Ø§Ù†ÙŠØ©</span>
             </div>
-            <div class="video-item" data-index="3" 
-                 data-src="https://drive.google.com/file/d/1YOUR_VIDEO_ID_3/preview" 
-                 data-title="ÇáãÍÇÖÑÉ ÇáËÇáËÉ">
+            <div class="video-item" data-index="3"
+                 data-src="https://drive.google.com/file/d/1HYb_6a3s_vTX-9Bovq1h8uKoF1jCKc-A/preview"
+                 data-title="Ø§Ù„Ù…Ø­Ø§Ø¶Ø±Ø© Ø§Ù„Ø«Ø§Ù„Ø«Ø©">
                 <span class="num">3</span>
-                <span class="item-title">ÇáãÍÇÖÑÉ ÇáËÇáËÉ</span>
+                <span class="item-title">Ø§Ù„Ù…Ø­Ø§Ø¶Ø±Ø© Ø§Ù„Ø«Ø§Ù„Ø«Ø©</span>
             </div>
-            <div class="video-item" data-index="4" 
-                 data-src="https://drive.google.com/file/d/1YOUR_VIDEO_ID_4/preview" 
-                 data-title="ÇáãÍÇÖÑÉ ÇáÑÇÈÚÉ">
+            <div class="video-item" data-index="4"
+                 data-src="https://drive.google.com/file/d/12UnZK-leSebo74CRScdQkl4gn4jtZX0J/preview"
+                 data-title="Ø§Ù„Ù…Ø­Ø§Ø¶Ø±Ø© Ø§Ù„Ø±Ø§Ø¨Ø¹Ø©">
                 <span class="num">4</span>
-                <span class="item-title">ÇáãÍÇÖÑÉ ÇáÑÇÈÚÉ</span>
+                <span class="item-title">Ø§Ù„Ù…Ø­Ø§Ø¶Ø±Ø© Ø§Ù„Ø±Ø§Ø¨Ø¹Ø©</span>
             </div>
         </div>
     </div>
 
     <script>
         (function() {
-            // ---- Video player logic ----
-            const mainVideo = document.getElementById('mainVideo');
-            const mainSource = document.getElementById('mainSource');
+            // ---- Iframe player logic ----
+            const mainFrame = document.getElementById('mainFrame');
             const videoItems = document.querySelectorAll('.video-item');
 
             // function to switch video
@@ -336,15 +246,8 @@
 
                 const newSrc = item.getAttribute('data-src');
 
-                // pause current video and reset
-                mainVideo.pause();
-                mainVideo.currentTime = 0;
-
-                // update source
-                mainSource.src = newSrc;
-                mainVideo.load(); // reload to apply new source
-
-                // optional: autoplay? No, leave it to user.
+                // update iframe source
+                mainFrame.src = newSrc;
             }
 
             // add click listeners to each list item
@@ -354,41 +257,24 @@
                 });
             });
 
-            // Load the first video initially (the active one)
+            // Load the first video initially (the active one) â€” already set in HTML
+            // but we ensure the src matches the active item just in case
             const firstItem = document.querySelector('.video-item.active');
             if (firstItem) {
                 const initialSrc = firstItem.getAttribute('data-src');
-                mainSource.src = initialSrc;
-                mainVideo.load();
+                if (mainFrame.src !== initialSrc) {
+                    mainFrame.src = initialSrc;
+                }
             }
 
             // ---- PROTECTION LAYER ----
-            // 1. Disable right-click on whole document
+            // 1. Disable right-click on the whole document
             document.addEventListener('contextmenu', function(e) {
                 e.preventDefault();
                 return false;
             }, { capture: true });
 
-            // 2. Prevent drag & drop on video and wrappers
-            const videos = document.querySelectorAll('video');
-            videos.forEach(video => {
-                video.addEventListener('dragstart', (e) => {
-                    e.preventDefault();
-                    return false;
-                });
-                const wrapper = video.closest('.video-wrapper');
-                if (wrapper) {
-                    wrapper.addEventListener('dragstart', (e) => e.preventDefault());
-                }
-            });
-
-            // 3. Block copy/cut on video
-            videos.forEach(video => {
-                video.addEventListener('copy', (e) => e.preventDefault());
-                video.addEventListener('cut', (e) => e.preventDefault());
-            });
-
-            // 4. Disable save shortcuts
+            // 2. Disable save shortcuts
             window.addEventListener('keydown', function(e) {
                 if ((e.ctrlKey || e.metaKey) && e.key === 's') {
                     e.preventDefault();
@@ -401,24 +287,7 @@
                 }
             });
 
-            // 5. Remove download attribute if present
-            videos.forEach(video => {
-                if (video.hasAttribute('download')) {
-                    video.removeAttribute('download');
-                }
-            });
-
-            // 6. Block middle-click on video
-            videos.forEach(video => {
-                video.addEventListener('auxclick', function(e) {
-                    if (e.button === 1) {
-                        e.preventDefault();
-                        return false;
-                    }
-                });
-            });
-
-            // 7. Also block middle-click on list items
+            // 3. Block middle-click on list items (prevent open in new tab)
             videoItems.forEach(item => {
                 item.addEventListener('auxclick', function(e) {
                     if (e.button === 1) {
@@ -426,26 +295,22 @@
                         return false;
                     }
                 });
-            });
-
-            // 8. Extra: prevent dragging from list item
-            videoItems.forEach(item => {
                 item.addEventListener('dragstart', (e) => e.preventDefault());
             });
 
-            console.log('?? Protected single-player gallery ready. Using Google Drive preview links.');
+            // 4. Prevent dragging on the iframe wrapper
+            const wrapper = document.querySelector('.video-wrapper');
+            if (wrapper) {
+                wrapper.addEventListener('dragstart', (e) => e.preventDefault());
+            }
+
+            console.log('?? Iframe gallery ready. Using Google Drive /preview links.');
         })();
     </script>
 
-    <!-- Extra CSS reinforcement for hiding download buttons -->
+    <!-- Extra CSS for selection prevention -->
     <style>
-        video::-webkit-media-controls-download-button {
-            display: none !important;
-        }
-        video::-moz-media-controls-download-button {
-            display: none !important;
-        }
-        .player-label, .video-item {
+        .video-item, .video-wrapper {
             user-select: none;
             -webkit-user-select: none;
         }
